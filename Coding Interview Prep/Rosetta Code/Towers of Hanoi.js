@@ -11,6 +11,7 @@ function towerOfHanoi(n, a, b, c) {
     if (n <= 1) {
       return [[a, b]];
     }
+    // move to extra, move to dest, move from extra to dest
     return towerOfHanoi(n - 1, a, c, b).concat([[a, b]]).concat(towerOfHanoi(n-1, c, b, a));
   }
   
