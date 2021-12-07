@@ -8,8 +8,7 @@
  * 
  * https://www.freecodecamp.org/learn/coding-interview-prep/rosetta-code/100-doors
  * 
- * Complexity O(n²)
- * @todo should be improved.
+ * Complexity O (log n)
  * 
  * @param {*} numDoors number of doors.
  * @returns the final result in an array, with only the door number included in the array if it is open.
@@ -17,16 +16,22 @@
 function getFinalOpenedDoors(numDoors) {
 
     let result = [];
-    for (let doorNumber = 1; doorNumber <= numDoors; doorNumber++) {
-        let timesToggled = 0;
-        for (let i = 1; i <= doorNumber; i++) {
-            if (doorNumber % i == 0) {
-                timesToggled++
-            }
-        }
-        if (timesToggled % 2 != 0) {
-            result.push(doorNumber);
-        }
+    // for (let doorNumber = 1; doorNumber <= numDoors; doorNumber++) {
+    //     let timesToggled = 0;
+    //     for (let i = 1; i <= doorNumber; i++) {
+    //         if (doorNumber % i == 0) {
+    //             timesToggled++
+    //         }
+    //     }
+    //     if (timesToggled % 2 != 0) {
+    //         result.push(doorNumber);
+    //     }
+    // }
+
+    let i = 1;
+    while (i * i <= numDoors) {
+        result.push(i * i);
+        i++;
     }
   
     return result;
@@ -41,6 +46,7 @@ function getFinalOpenedDoors(numDoors) {
 const equals = (a, b) =>
   a.length === b.length &&
   a.every((v, i) => v === b[i]);
+
 
 if (equals(getFinalOpenedDoors(100), [1,  4,  9, 16,  25, 36, 49, 64, 81, 100])) {
      console.log("OK");
